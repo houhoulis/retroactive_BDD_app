@@ -1,20 +1,21 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
-  def index
-    @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
-    end
-  end
+#  def index
+#    @posts = Post.all
+#
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @posts }
+#    end
+#  end
 
   # GET /posts/1
   # GET /posts/1.xml
   def show
     @post = Post.find(params[:id])
     @comments = Comment.find_all_by_post_id(params[:id])
+    get_author
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +27,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new
+    get_author
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,16 +38,18 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    get_author
   end
 
   # POST /posts
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
+    get_author
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+        format.html { redirect_to([@author,@post], :notice => 'Post was successfully created.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }
@@ -58,6 +62,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = Post.find(params[:id])
+    get_author
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -80,5 +85,10 @@ class PostsController < ApplicationController
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private #######################################
+  def get_author
+    return @author = Author.find(params[:author_id])
   end
 end

@@ -1,12 +1,9 @@
 <h1>New post</h1>
 
-<% form_for(@post) do |f| %>
+<% form_for([@author,@post]) do |f| %>
+, :url => new_author_post_path(@author)) do |f| %->
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
-  </p>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -20,4 +17,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', author_posts_path %>
