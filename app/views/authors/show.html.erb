@@ -1,13 +1,13 @@
-<p>
+<h1>
   <b>Name:</b>
   <%=h @author.name %>
-</p>
-
-<p>
-  <b>Website:</b>
+  &msp;<b>Website:</b>
   <%=h @author.website %>
-</p>
+</h1>
 
+<h2>Posts:</h2>
+
+<%= render :partial => @posts %>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>
