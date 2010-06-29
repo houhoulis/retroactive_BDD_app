@@ -5,9 +5,12 @@
   <%=h @author.website %>
 </h1>
 
+<div>
 <h2>Posts:</h2>
 
 <%= render :partial => @posts %>
+<%=h link_to 'New post', new_author_post_path(@author) %>
+</div>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>
