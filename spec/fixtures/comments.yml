@@ -1,9 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  post: 
+  post: 1
   body: MyText
 
 two:
-  post: 
-  body: MyText
+  post: 2
+  body: TwoMyText
+
+three:
+  post: 3
+  body: 3MyText
+
+four:
+  post: 1
+  body: 4on1
+
+five:
+  post: 1
+  body: 5on1
+
+six:
+  post: 3
+  body: 6skip6skipskiptomyLou

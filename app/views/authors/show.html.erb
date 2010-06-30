@@ -8,7 +8,7 @@
 <div>
 <h2>Posts:</h2>
 
-<%= render @posts %>
+<%= render :partial => 'posts/post', :collection => @posts %>
 <%=h link_to 'New post', new_author_post_path(@author) %>
 </div>
 
