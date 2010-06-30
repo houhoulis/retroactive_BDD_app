@@ -1,0 +1,12 @@
+<div style="border: 1px solid blue;">
+<%=h post.title %>
+<span style="display: block; text-align: right;"><%=h post.body %>
+</span>
+
+<% comments =  Comment.find_all_by_post_id(post.id) %>
+<% comments.each do |comment| %>
+<span style="display: block; margin-left: 25px; background-color: #feb; border-bottom: 1px dotted black;">
+<%=h render 'comments/comment', :object => comment %>
+</span>
+<% end %>
+</div>

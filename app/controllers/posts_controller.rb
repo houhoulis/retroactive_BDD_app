@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     get_author
+    @post.author_id = @author.id
 
     respond_to do |format|
       if @post.save
@@ -63,10 +64,11 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     get_author
+    (@post.author_id == @author.id) || (@post.author_id = @author.id)
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+        format.html { redirect_to([@author,@post], :notice => 'Post was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,7 +84,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to(author_posts_url) }
       format.xml  { head :ok }
     end
   end

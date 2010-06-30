@@ -1,12 +1,8 @@
 <h1>Editing post</h1>
 
-<% form_for(@post) do |f| %>
+<% form_for([@author,@post]) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
-  </p>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -20,5 +16,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Show', author_post_path(@author,@post) %> |
+<%= link_to 'Back', author_path(@author) %>

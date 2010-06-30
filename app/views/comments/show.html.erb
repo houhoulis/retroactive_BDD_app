@@ -1,13 +1,13 @@
 <p>
-  <b>Post:</b>
-  <%=h @comment.post %>
+  <b>Post title:</b>
+  <%=h @comment.post.title %>
 </p>
 
 <p>
-  <b>Body:</b>
+  <b>Comment:</b>
   <%=h @comment.body %>
 </p>
 
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_author_post_comment_path(@author,@post,@comment) %> |
+<%= link_to 'Back', author_post_path(@author,@post) %>

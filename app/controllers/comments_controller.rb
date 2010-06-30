@@ -1,14 +1,18 @@
 class CommentsController < ApplicationController
+
+  before_filter :get_author
+  before_filter :get_post
+
   # GET /comments
   # GET /comments.xml
-  def index
-    @comments = Comment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @comments }
-    end
-  end
+#  def index
+#    @comments = Comment.all
+#
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @comments }
+#    end
+#  end
 
   # GET /comments/1
   # GET /comments/1.xml
@@ -41,10 +45,11 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
+    @comment.post_id = @post.id
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
+        format.html { redirect_to([@author,@post,@comment], :notice => 'Comment was successfully created.') }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }
@@ -60,7 +65,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
+        format.html { redirect_to([@author,@post,@comment], :notice => 'Comment was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,8 +81,16 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(comments_url) }
+      format.html { redirect_to(author_post_comments_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def get_author
+    @author = Author.find(params[:author_id])
+  end
+  def get_post
+    @post = Post.find(params[:post_id])
   end
 end
