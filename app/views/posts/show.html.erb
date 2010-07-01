@@ -1,19 +1,21 @@
-<h1>
+<h2>
   Author:
   <%=h @post.author.name %>
-  &emsp;
+</h2>
+<h1>
   Title:
   <%=h @post.title %>
 </h1>
 
-<p>
-  <%=h @post.body %>
-</p>
+<%= simple_format @post.body %>
 
-<p>
+<p id="post_comments">
 <b>Comments:</b>
-<%= render :partial => @comments %>
-<br />
+<% @comments.each do |c| %>
+  <span>
+  <%= render :partial => 'comments/comment', :object => c %>
+  </span>
+<% end %>
 <%=h link_to 'New comment', new_author_post_comment_path(@author,@post) %>
 </p>
 

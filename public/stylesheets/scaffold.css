@@ -1,3 +1,21 @@
+div#show_my_posts_and_comments > div {
+  border: 1px solid blue;
+}
+div#show_my_posts_and_comments span.author_post_title {
+  display: block; font-size: 120%; font-variant: small-caps;
+  font-weight: bold;
+}
+div#show_my_posts_and_comments span.author_post_body > p {
+  font-size: 120%; text-align: center;
+  padding-bottom: 20px;
+}
+div#show_my_posts_and_comments span.author_post_comment {
+  display: block; margin-left: 25px; background-color: #feb;
+  border-bottom: 1px dotted black;
+}
+p#post_comments { margin-left: 25px; background-color: #eee; }
+p#post_comments span { display: block; border-bottom: 1px dotted #999; }
+
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {

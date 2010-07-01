@@ -1,12 +1,12 @@
-<div style="border: 1px solid blue;">
-<%=h post.title %>
-<span style="display: block; text-align: right;"><%=h post.body %>
-</span>
+<div>
+<span class="author_post_title"><%=h post.title %></span>
+<span class="author_post_body"><%= simple_format post.body %></span>
 
 <% comments =  Comment.find_all_by_post_id(post.id) %>
 <% comments.each do |comment| %>
-<span style="display: block; margin-left: 25px; background-color: #feb; border-bottom: 1px dotted black;">
-<%=h render 'comments/comment', :object => comment %>
-</span>
+  <span class="author_post_comment">
+  <%=h render 'comments/comment', :object => comment %>
+  </span>
 <% end %>
+<%=h link_to 'Show just this post', author_post_path(post.author_id,post) %>
 </div>
