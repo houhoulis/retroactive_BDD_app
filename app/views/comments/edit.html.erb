@@ -1,12 +1,8 @@
 <h1>Editing comment</h1>
 
-<% form_for(@comment) do |f| %>
+<% form_for([@author,@post,@comment]) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :post %><br />
-    <%= f.text_field :post %>
-  </p>
   <p>
     <%= f.label :body %><br />
     <%= f.text_area :body %>
@@ -16,5 +12,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Show', author_post_comment_path(@author,@post,@comment) %> |
+<%= link_to 'Back', author_post_path(@author,@post) %>
