@@ -7,7 +7,7 @@
   <%=h @post.title %>
 </h1>
 
-<%= simple_format @post.body %>
+<%=h simple_format @post.body %>
 
 <p id="post_comments">
 <b>Comments:</b>
@@ -20,5 +20,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_author_post_path(@author,@post) %> |
-<%= link_to 'Back', author_path(@author) %>
+<%=h link_to 'Edit', edit_author_post_path(@author,@post) %> |
+<%=h link_to 'Back', author_path(@author) %>

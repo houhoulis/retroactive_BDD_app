@@ -1,6 +1,6 @@
 <div>
 <span class="author_post_title"><%=h post.title %></span>
-<span class="author_post_body"><%= simple_format post.body %></span>
+<span class="author_post_body"><%=h simple_format post.body %></span>
 
 <% comments =  Comment.find_all_by_post_id(post.id) %>
 <% comments.each do |comment| %>
