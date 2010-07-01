@@ -2,11 +2,11 @@ This is a demo project.
 
 It's a demo of how NOT to do things the BDD way.
 
-But sometimes you need to get an unwieldy codebase under control, and you'd like to use best BDD practices going forward.  This is a sample app to test this kind of retrofitting.
+But sometimes you need to get a pre-existing, unwieldy codebase under control, and you'd like to use best BDD practices going forward.  This is a sample app to test this kind of retrofitting.
 
 The app will mostly work, but will still be buggy, before BDD-esque testing (or any testing for that matter) is employed.  Bugs will mostly be provided via unnecessary and outdated scaffolding, such as defined routes and controller methods that are undesired and/or broken.
 
-I found these links very helpful in discussing how to approach (or not approach) retrofitting testing code:
+I found these links very helpful in discussing how to approach retrofitting test code, and to what extent it is worth the effort:
 
 >> http://stackoverflow.com/questions/111389/best-way-to-add-tests-to-an-existing-rails-project
 
